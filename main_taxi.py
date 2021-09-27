@@ -7,6 +7,7 @@ while True:
 
 sotr = []
 taxi = []
+final_list = []
 print('Введите расстояния до домов сотрудников')
 
 for i in range(numb):
@@ -17,6 +18,7 @@ for i in range(numb):
         except(ValueError, TypeError):
             print(print('Некорректное значение'))
     sotr.append(Value)
+    final_list.append(Value)
 print('Введите тарифы таксистов')
 
 for i in range(numb):
@@ -29,6 +31,7 @@ for i in range(numb):
     taxi.append(Value)
 
 for i in range(len(sotr)):
-    print('Сотрудник с расстоянием до дома', max(sotr), 'Поедет на такси с тарифом', min(taxi))
-    sotr.remove(max(sotr))
-    taxi.remove(min(taxi))
+    final_list[sotr.index(min(sotr))] = taxi.index(max(taxi))+1
+    sotr[sotr.index(min(sotr))] = 1001
+    taxi[taxi.index(max(taxi))] = -1
+print(final_list)
